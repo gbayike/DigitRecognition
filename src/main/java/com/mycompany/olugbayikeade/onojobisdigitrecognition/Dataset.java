@@ -53,6 +53,10 @@ public class Dataset {
         return data;
     }
     
+    /**
+     * sets the ecluidean distance
+     * @param distance 
+     */
     void setDistance(double distance){
         this.distance = distance;
     }

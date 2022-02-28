@@ -22,6 +22,14 @@ import java.util.stream.Collectors;
  * @author olugb
  */
 public class Knn extends commonFunctions{
+    
+    /**
+     * The K-NN Algorithm implementation
+     * @param train the train data set
+     * @param test the test data set
+     * @param k the number of nearest neighbours to filter
+     * @return 
+     */
     Dataset knnAlgorithm(Dataset train, Dataset test, int k){
         Dataset estimatedValues = new Dataset();  // contains the integer value as key and the distance as value
         
@@ -78,13 +86,27 @@ public class Knn extends commonFunctions{
         return estimatedValues;
     }
     
-    void Knnrun(Dataset train, Dataset test, int k){
+    
+    /**
+     * run the K-NN algorithm
+     * @param train the train data set
+     * @param test the test data set
+     * @param k the number of nearest neighbours to filter
+     * @return 
+     */
+    double Knnrun(Dataset train, Dataset test, int k){
         Dataset predictedValues = knnAlgorithm(train, test, k);
         double accuracy = testaccuracy(test, predictedValues);
-        System.out.println("Accuracy is: "+ accuracy);
+//        System.out.println("Accuracy is: "+ accuracy);
+        return accuracy;
     }
     
-    
+    /**
+     * calculates the euclidean distance between pixel values
+     * @param key1 the first list of pixel values
+     * @param key2 the second list of pixel values
+     * @return 
+     */
      private double euclideanDistance(ArrayList<Integer> key1, ArrayList<Integer> key2){
         int size = key1.size();
         double equation = 0;
@@ -96,66 +118,5 @@ public class Knn extends commonFunctions{
         }
         
         return Math.sqrt(equation);
-    }
-     
-     
-    public static void main(String[] args) throws FileNotFoundException {
-        Knn knn = new Knn();
-        FileScanner dataset1 = new FileScanner("src/test/Resources/cw2DataSet1.csv");
-        FileScanner dataset2 = new FileScanner("src/test/Resources/cw2DataSet2.csv");
-        
-        knn.Knnrun(dataset2.data, dataset1.data, 3);
-//        ArrayList<Integer> key1 = new ArrayList(
-//            Arrays.asList(1,
-//                          1,
-//                          10,
-//                           3));
-//        ArrayList<Integer> key2 = new ArrayList(
-//            Arrays.asList(5,
-//                          5,
-//                          2,
-//                          7
-//                          ));
-//        
-//        ArrayList<Integer> key5 = new ArrayList(
-//            Arrays.asList(5,
-//                          5,
-//                          2,
-//                          7,
-//                          10,
-//                          10,
-//                          1,
-//                          11,
-//                          12,
-//                          11
-//                          ));
-//         ArrayList<Integer> key3 = new ArrayList(
-//            Arrays.asList(5,
-//                          5,
-//                          5,
-//                          5,
-//                          5,
-//                          5,
-//                          5,
-//                          5,
-//                          5,
-//                          5
-//                          ));
-//        
-//        System.out.println(knn.mode(key5).size());
-//        
-//        
-//        List<Integer> firstkDistances = key2.stream().limit(6).collect(Collectors.toList());
-//        
-//        System.out.println("First K distances sorted = " + firstkDistances);
-//        ArrayList<Integer> key = new ArrayList(knn.modeWithMaps(key3));
-//        System.out.println(key);
-////        int mode = key.get(0);
-////        System.out.println(mode);
-//        double total = 8;
-//        double half = 1/total * 10.0;
-//        
-//        System.out.println(half);
-//        System.out.println(knn.euclideanDistance(key1, key2));
     }
 }

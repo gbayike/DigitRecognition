@@ -40,6 +40,12 @@ public class commonFunctions {
         return temp;
     }
     
+    
+    /**
+     * Function for calculating the neighbour that occurs most of K neighbours
+     * @param list the list of digits
+     * @return 
+     */
      
     ArrayList<Integer> modeWithMaps(ArrayList<Integer> list){
         ArrayList<Integer> modes = new ArrayList();
@@ -68,6 +74,12 @@ public class commonFunctions {
     }
 
     
+    /**
+     * A function that tests the accuracy of the algorithm
+     * @param actual the data set with actual values
+     * @param predicted the data set with predicted values
+     * @return 
+     */
     double testaccuracy(Dataset actual, Dataset predicted){
         int correct = 0;
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");

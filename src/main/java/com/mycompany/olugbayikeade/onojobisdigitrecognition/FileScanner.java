@@ -80,24 +80,4 @@ public class FileScanner {
         data.addKeys();
         return data;
     }
-    
-    
-    
-    
-    public static void main(String[] args) throws FileNotFoundException {
-        FileScanner objscn = new FileScanner("src/test/Resources/cw2DataSet1.csv");
-        FileScanner objscn1 = new FileScanner("src/test/Resources/cw2DataSet2.csv");
-        
-        System.out.println("----------------------------Dataset 1----------------------------");
-        System.out.println(objscn.data.getData());
-        System.out.println(objscn.data.getKey().get(1));
-//        System.out.println(objscn.data.getKey().get(1).getClass().getName());
-        System.out.println(objscn.data.size());
-        
-        System.out.println("----------------------------Dataset 2----------------------------");
-        System.out.println(objscn1.data.getData());
-        System.out.println(objscn1.data.getKey().get(1));
-//        System.out.println(objscn1.data.getKey().get(1).getClass().getName());
-        System.out.println(objscn1.data.size());
-    }
 }
