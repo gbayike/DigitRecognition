@@ -58,24 +58,23 @@ public class Knn extends commonFunctions{
                 }
             });
 
-            List<Dataset> kElements = allDistances.subList(0, k);
-
-
-            ArrayList<Integer> kValues = new ArrayList();
-            for(Dataset data : kElements){
-                ArrayList<Integer> pixelValues = data.getKey().get(0);
-                kValues.add(data.getData().get(pixelValues));
-            }    
+            ArrayList<Integer> kValues = subList(allDistances, k);
             
             ArrayList<Integer> modeList = modeWithMaps(kValues);
+            
             int size = modeList.size();
             int mode = 0;
             if(size == 1){
                 mode = modeList.get(0);
             }if(size > 1){
-                Random rand = new Random();
-                int randValue = rand.nextInt(k);
-                mode = modeList.get(randValue);
+//                Random rand = new Random();
+//                int randValue = rand.nextInt(size);
+                kValues.removeAll(kValues);
+                kValues = subList(allDistances, 3);
+                modeList.removeAll(modeList);
+                modeList = modeWithMaps(kValues);
+//                mode = modeList.get(randValue);
+                mode = modeList.get(0);
             }if(size< 1){
                 System.out.println("Its a size of zero");
             }
@@ -86,6 +85,18 @@ public class Knn extends commonFunctions{
         return estimatedValues;
     }
     
+    ArrayList<Integer> subList(ArrayList<Dataset> allDistances, int k){
+        List<Dataset> kElements = allDistances.subList(0, k);
+
+
+        ArrayList<Integer> kValues = new ArrayList();
+        for(Dataset data : kElements){
+            ArrayList<Integer> pixelValues = data.getKey().get(0);
+            kValues.add(data.getData().get(pixelValues));
+        }
+        
+        return kValues;
+    }
     
     /**
      * run the K-NN algorithm

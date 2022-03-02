@@ -7,7 +7,7 @@ package com.mycompany.olugbayikeade.onojobisdigitrecognition;
 import java.io.FileNotFoundException;
 
 /**
- *
+ *  
  * @author olugb
  */
 public class RunDigitRecognition {
@@ -21,7 +21,7 @@ public class RunDigitRecognition {
         FileScanner dataset2 = new FileScanner("src/test/Resources/cw2DataSet2.csv");
         
        NFoldCrossValidation crss = new NFoldCrossValidation();
-       double accuracy = crss.crossValidationKNN(dataset1.data, dataset2.data);
+       double accuracy = crss.crossValidationKNN(dataset1.data, dataset2.data, 1);
        
        System.out.println("The accuracy of the Algorithm is "+ accuracy);
        System.out.println("---------------------------------------------------------------------------------------------------------------------");

@@ -19,11 +19,15 @@ public class NFoldCrossValidation {
 //        
 //    }
     /**
-     *  Cross validation function based on pseudocode from AIMA(Russel and Norvig)
-     * @param k no of folds
-     * @return 
-     */
-    public double crossValidationKNN(Dataset dataset1, Dataset dataset2) throws FileNotFoundException{
+     * 
+     * @param dataset1
+     * @param dataset2
+     * @param n no of folds
+     * @return
+     * @throws FileNotFoundException 
+     */ 
+     
+    public double crossValidationKNN(Dataset dataset1, Dataset dataset2, int n) throws FileNotFoundException{
         int k = 2;
         ArrayList<Double> accuracy = new ArrayList();
         double totalAccuracy = 0;
@@ -33,14 +37,14 @@ public class NFoldCrossValidation {
         Knn knn = new Knn();
         for (int i = 0; i < k; i++) {
             if(i == 0){
-                double individualAccuracy = knn.Knnrun(dataset1, dataset2, 3);
+                double individualAccuracy = knn.Knnrun(dataset1, dataset2, n);
                 accuracy.add(individualAccuracy);
                 totalAccuracy += individualAccuracy;
                 System.out.println("---------------------------------------------------------------------------------------------------------------------");
                 System.out.println("The accuracy of fold " + (i + 1) + " = " + individualAccuracy);
                 System.out.println("---------------------------------------------------------------------------------------------------------------------");
             }else{
-                double individualAccuracy = knn.Knnrun(dataset2, dataset1, 3);
+                double individualAccuracy = knn.Knnrun(dataset2, dataset1, n);
                 accuracy.add(individualAccuracy);
                 totalAccuracy += individualAccuracy;
                 System.out.println("---------------------------------------------------------------------------------------------------------------------");
